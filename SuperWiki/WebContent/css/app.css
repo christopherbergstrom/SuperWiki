@@ -1,0 +1,69 @@
+@CHARSET "UTF-8";
+
+.formH {
+margin-top: 100px;
+}
+
+.addSupBanner {
+    width: 100%;
+    height: auto;
+}
+
+
+.login {
+	padding-top: 50px;
+}
+
+.characterresult {
+	padding-top: 50px;
+	
+}
+
+.resultlistimg {
+	width: 100%;
+	height: auto;
+}
+
+.result {
+	padding-top: 50px;
+}
+
+.indivcharimg {
+	width: 100px;
+	height: auto;
+}
+
+.adduser {
+	padding-top: 50px;
+}
+
+.signuptext {
+	float: right;
+}
+
+.logintop {
+	padding-top: 50px;
+}
+
+.profile {
+	padding-top: 50px;
+}
+
+#grover {
+	width: 100%;
+}
+
+.updatecomment {
+	padding-top: 50px;
+}
+
+.updatecharacter {
+	padding-top: 50px;
+}
+.errorjsp{
+	padding-top: 50px;
+}
+#loginfix {
+	width: 100%;
+	height: auto;
+}
