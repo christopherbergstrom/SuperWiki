@@ -12,31 +12,44 @@ import superHeroTest.SuperPersons;
 import superHeroTest.SuperType;
 
 @Transactional
-public class SuperDAO {
+public class SuperDAO
+{
 	@PersistenceContext
 	private EntityManager em;
-	
-	public List<SuperPersons> getByName(String name) {
-		return em.createNamedQuery("SuperPersons.getName", SuperPersons.class).setParameter("name", "%" + name + "%").getResultList();
+
+	public List<SuperPersons> getByName(String name)
+	{
+		return em.createNamedQuery("SuperPersons.getName", SuperPersons.class).setParameter("name", "%" + name + "%")
+				.getResultList();
 	}
-//	public SuperPersons getByName(String name) {
-//		return em.createNamedQuery("SuperPersons.getName",SuperPersons.class).setParameter("name", "%" + name + "%").getSingleResult();
-//	}
-	public SuperPersons getById(int Id) {
-		return em.find(SuperPersons.class, Id); 
+
+	// public SuperPersons getByName(String name) {
+	// return
+	// em.createNamedQuery("SuperPersons.getName",SuperPersons.class).setParameter("name",
+	// "%" + name + "%").getSingleResult();
+	// }
+	public SuperPersons getById(int Id)
+	{
+		return em.find(SuperPersons.class, Id);
 	}
+
 	public List<SuperPersons> getAllSuperheroes()
 	{
-		return em.createNamedQuery("SuperPersons.getAllSuperHeros", SuperPersons.class).setParameter("supertype", SuperType.superhero).getResultList();
+		return em.createNamedQuery("SuperPersons.getAllSuperHeros", SuperPersons.class)
+				.setParameter("supertype", SuperType.superhero).getResultList();
 	}
+
 	public List<SuperPersons> getAllVillains()
 	{
-		return em.createNamedQuery("SuperPersons.getAllSuperHeros", SuperPersons.class).setParameter("supertype", SuperType.villain).getResultList();
+		return em.createNamedQuery("SuperPersons.getAllSuperHeros", SuperPersons.class)
+				.setParameter("supertype", SuperType.villain).getResultList();
 	}
+
 	public List<SuperPersons> getAllCharacters()
 	{
 		return em.createQuery("select s from SuperPersons s", SuperPersons.class).getResultList();
 	}
+
 	public void addSuperPerson(SuperPersons sp)
 	{
 		List<SuperPersons> characters = em.createQuery("select s from SuperPersons s", SuperPersons.class).getResultList();
@@ -52,6 +65,7 @@ public class SuperDAO {
 		if (match)
 			em.persist(sp);
 	}
+
 	public void updateCharacter(SuperPersons sp)
 	{
 		SuperPersons sperson = getById(sp.getId());
@@ -66,7 +80,9 @@ public class SuperDAO {
 		sperson.setImage(sp.getImage());
 		em.persist(sperson);
 	}
-	public SuperPersons refreshSuperPersons(SuperPersons sp){
+
+	public SuperPersons refreshSuperPersons(SuperPersons sp)
+	{
 		sp = em.merge(sp);
 		em.refresh(sp);
 		return sp;
